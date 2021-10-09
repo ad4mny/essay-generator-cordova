@@ -1,0 +1,1 @@
+var webURL = "http://localhost/essay-generator/";
