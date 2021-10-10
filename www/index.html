@@ -12,7 +12,19 @@
 
 <body>
     <!-- Content  -->
+    <script type="text/javascript">
+        window.addEventListener('load', (event) => {
 
+            var token = JSON.parse(localStorage.getItem('token'));
+
+            if (token != null) {
+                location.replace('group.html');
+            } else {
+                location.replace('login.html');
+            }
+
+        });
+    </script>
 
     <!-- Script  -->
     <script src="js/jquery-3.6.0.min.js"></script>
