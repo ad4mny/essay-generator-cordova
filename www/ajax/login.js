@@ -99,9 +99,3 @@ var comparePassword = function () {
     }
 };
 
-var logout = function () {
-
-    localStorage.clear();
-    location.replace('index.html');
-
-};
