@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <title>Essay Generator</title>
+</head>
+
+<body class="bg-light">
+    <!-- Mobile Toolbar -->
+    <div class="bg-white d-inline-flex w-100 border-top shadow-sm ">
+        <div class="p-2 flex-fill">
+            <h4 class="mb-0  text-center py-1">Essay Generator</h4>
+        </div>
+    </div>
+
+    <!-- Mobile Appbar -->
+    <div class="bg-white fixed-bottom d-inline-flex w-100 border-top shadow-sm ">
+        <div class="p-2 flex-fill">
+            <a href="group.html" class="btn">
+                <i class="fas fa-user-friends fa-fw fa-lg"></i>
+            </a>
+        </div>
+        <div class="p-2 flex-fill">
+            <a href="vocabulary.html" class="btn">
+                <i class="fas fa-underline fa-fw fa-lg"></i>
+            </a>
+        </div>
+        <div class="p-2 flex-fill">
+            <a href="#" class="btn text-primary">
+                <i class="fas fa-align-left fa-fw fa-lg"></i>
+            </a>
+        </div>
+        <div class="p-2 flex-fill">
+            <a href="submission.html" class="btn ">
+                <i class="fas fa-file-import fa-fw fa-lg"></i>
+            </a>
+        </div>
+        <div class="p-2 flex-fill">
+            <a href="#" class="btn " onclick="logout()">
+                <i class="fas fa-sign-out-alt fa-fw fa-lg"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Content  -->
+    <div class="container py-4">
+
+    </div>
+
+    <div class="row">
+        <div class="col text-center bg-white shadow rounded-3 w-50 p-4 border position-absolute top-50 start-50 translate-middle justify-content-center"
+            id="load_gif" style="display: none;">
+            <img src="css/load.gif" height="70" width="70">
+            <p class="text-muted">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Script  -->
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/app.js"></script>
+    <script src="ajax/outline.js"></script>
+
+</body>
+
+</html>
