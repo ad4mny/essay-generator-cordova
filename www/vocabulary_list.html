@@ -12,14 +12,13 @@
 </head>
 
 <body class="bg-light">
-    <!-- Mobile Toolbar -->
+
     <div class="bg-white d-inline-flex w-100 border-top shadow-sm ">
         <div class="p-2 flex-fill">
             <h4 class="mb-0  text-center py-1">Essay Generator</h4>
         </div>
     </div>
 
-    <!-- Mobile Appbar -->
     <div class="bg-white fixed-bottom d-inline-flex w-100 border-top shadow-sm ">
         <div class="p-2 flex-fill">
             <a href="group.html" class="btn">
@@ -52,31 +51,33 @@
     <div class="container">
         <div class="row my-3">
             <div class="col">
-                <h1 class="fw-bold display-3 mb-0">Essays</h1>
-                <p class="mb-0 text-muted fw-light">Add and submit a new essay title.</p>
+                <h1 class="fw-bold display-3 mb-0">Vocabulary</h1>
+                <p class="mb-0 text-muted fw-light">Add vocabulary into the essay.</p>
             </div>
         </div>
-
         <div class="row g-3 ">
             <div class="col-12">
-                <small>Title</small>
-                <input type="text" class="form-control" id="title" placeholder="Your essay title" required>
+                <small>Word List</small>
+                <div class="card p-3">
+                    <div class="row" id="vocab_list">
+                        <!-- Vocabulary list here  -->
+                    </div>
+                </div>
             </div>
             <div class="col-12">
-                <small>Email Type</small>
-                <select class="form-select" id="email" required>
-                    <option value="1">Email 1</option>
-                    <option value="2">Email 2</option>
-                    <option value="3">Email 3</option>
-                    <option value="4">Email 4</option>
-                    <option value="5">Email 5</option>
-                </select>
+                <small id="title"></small>
+                <div class="card p-3">
+                    <div class="row " id="vocab_selected">
+                        <!-- Chosen vocab here  -->
+                    </div>
+                </div>
             </div>
             <div class="col-12 text-center">
-                <button type="button" class="btn btn-primary" onclick="submitTitle()">Next</button>
+                <a href="#" class="btn btn-secondary" onclick="reset()">Reset</a>
+                <a href="#" class="btn btn-primary" onclick="next()">Next</a>
             </div>
-            <div class="col-auto" id="info_box">
-                <!-- Error information  -->
+            <div class="col-auto">
+                <small class="text-danger" id="info_box"></small>
             </div>
         </div>
     </div>
@@ -91,10 +92,10 @@
 
     <!-- Script  -->
     <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="cordova.js"></script>
+    <!-- <script src="js/bootstrap.bundle.min.js"></script> -->
+    <!-- <script src="cordova.js"></script> -->
     <script src="js/app.js"></script>
-    <script src="ajax/vocabulary.js"></script>
+    <script src="ajax/vocabulary_list.js"></script>
 
 </body>
 
