@@ -1,3 +1,5 @@
+var existing_vocab = [];
+
 window.addEventListener('load', (event) => {
 
     var parameter = new URLSearchParams(window.location.search);
@@ -24,13 +26,36 @@ window.addEventListener('load', (event) => {
         },
         success: function (data) {
 
-            if (data != false) {
-                for (var i = 0; i < data.length; i++) {
-                    $('#vocab_list').append('<button class="col-auto btn border m-1 btn-vocab" id="' + data[i].id + '" value="' + data[i].word + '">' +
-                        data[i].word +
-                        '</button>');
+            var outlines = JSON.parse(localStorage.getItem('outline'));
+            existing_vocab = [];
+
+            if (outlines != null) {
+                for (var i = 0; i < outlines.length; i++) {
+                    if (outlines[i].paragraph == paragraph) {
+                        existing_vocab.push(outlines[i].id);
+                        $('#vocab_selected').append(
+                            '<button class="col-auto btn border m-1 remove-vocab" id="' + outlines[i].id + '" value="' + outlines[i].word + '">' +
+                            outlines[i].word +
+                            '</button>');
+                    }
                 }
             }
+
+            if (data != false) {
+                for (var i = 0; i < data.length; i++) {
+                    if (existing_vocab.indexOf(data[i].id) === -1) {
+
+                        $('#vocab_list').append('<button class="col-auto btn border m-1 add-vocab" id="' + data[i].id + '" value="' + data[i].word + '">' +
+                            data[i].word +
+                            '</button>');
+
+                    }
+                }
+            } else {
+                $('#vocab_list').append('<p class="text-muted">No word list found for this type of essay yet.</p>');
+            }
+
+
         },
         error: function () {
             $('#info_box').html('<div class="row"><div class="col"><p class="my-3 text-muted">Internal server error, please reload.</p></div></div>');
@@ -41,23 +66,44 @@ window.addEventListener('load', (event) => {
 
     });
 
+
 });
 
-$('body').on('click', '.btn-vocab', function (e) {
+$('body').on('click', '.add-vocab', function (e) {
+
     var id = this.id;
     var word = this.getAttribute("value");
-    var data = [];
 
-    data = JSON.parse(localStorage.getItem('vocab'));
-
-    if (data == null) {
+    if (existing_vocab == null) {
         localStorage.setItem('vocab', JSON.stringify([id]));
     } else {
-        data.push(id);
-        localStorage.setItem('vocab', JSON.stringify(data));
+        existing_vocab.push(id);
+        localStorage.setItem('vocab', JSON.stringify(existing_vocab));
+    }
+    console.log(JSON.parse(localStorage.getItem('vocab')));
+
+    $('#vocab_selected').append(
+        '<button class="col-auto btn border m-1 remove-vocab" id="' + id + '" value="' + word + '">' +
+        word +
+        '</button>');
+    $(this).remove();
+
+});
+
+$('body').on('click', '.remove-vocab', function (e) {
+
+    var id = this.id;
+    var word = this.getAttribute("value");
+
+    if (existing_vocab != null) {
+        existing_vocab.splice(existing_vocab.indexOf(id), 1);
+        localStorage.setItem('vocab', JSON.stringify(existing_vocab));
     }
 
-    $('#vocab_selected').append('<button class="col-auto btn border m-1" id="' + id + '">' +
+    console.log(JSON.parse(localStorage.getItem('vocab')));
+
+    $('#vocab_list').append(
+        '<button class="col-auto btn border m-1 add-vocab" id="' + id + '" value="' + word + '">' +
         word +
         '</button>');
     $(this).remove();
@@ -75,15 +121,17 @@ var next = function () {
     localStorage.removeItem('vocab');
     var parameter = new URLSearchParams(window.location.search)
     var essayid = parameter.get('essayid');
+    var paragraph = parameter.get('paragraph');
 
-    if (data != null) {
+    if (data != null && data.length > 0) {
 
         $.ajax({
             type: "POST",
             url: webURL + "api/set_vocabulary",
             data: {
                 essayid: essayid,
-                data: data
+                data: data,
+                paragraph: paragraph
             },
             dataType: 'json',
             beforeSend: function () {
