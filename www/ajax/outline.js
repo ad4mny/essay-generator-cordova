@@ -18,8 +18,10 @@ window.addEventListener('load', (event) => {
             $('#load_gif').show();
         },
         success: function (data) {
-            console.log(data);
+
             if (data != false) {
+                localStorage.setItem('outline', JSON.stringify(data));
+
                 for (var i = 0; i < data.length; i++) {
                     if (data[i].paragraph == 1) {
                         $('#introduction').append('<span class="col-auto btn border m-1">' +
@@ -33,6 +35,7 @@ window.addEventListener('load', (event) => {
 
                 }
             } else {
+                localStorage.removeItem('outline');
                 $('#introduction').html('<p class="text-muted">No essay outline yet.</p>');
                 $('#email_body').html('<p class="text-muted">No essay outline yet.</p>');
             }
