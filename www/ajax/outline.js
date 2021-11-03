@@ -51,7 +51,6 @@ window.addEventListener('load', (event) => {
 
 });
 
-
 var submitOutline = function () {
 
     var parameter = new URLSearchParams(window.location.search)

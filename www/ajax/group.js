@@ -168,7 +168,6 @@ $('#join_form').submit(function (e) {
 
 });
 
-
 $('#create_form').submit(function (e) {
     e.preventDefault();
 
