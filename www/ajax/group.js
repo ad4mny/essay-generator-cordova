@@ -25,7 +25,7 @@ window.addEventListener('load', (event) => {
                         fullname = data[i].fullname;
                     }
                     result +=
-                        '<div class="card shadow-sm border rounded-3 p-2 mb-2 mx-2">' +
+                        '<div class="border rounded-3 p-2 m-1 bg-white">' +
                         '<p class="text-capitalize mb-0">' + fullname + '</p>' +
                         '<p class="mb-0">' + data[i].phone + '</p>' +
                         '</div>';
@@ -36,7 +36,7 @@ window.addEventListener('load', (event) => {
                 $('#display').html(
                     '<div class="col-12">' +
                     '<small class="fw-light">Group Name</small>' +
-                    '<div class="card shadow-sm border rounded-3 p-2 mb-2 mx-2">' +
+                    '<div class="border rounded-3 p-2 m-1 bg-white">' +
                     '<h3 class="text-capitalize mb-0">' + data[0].name + '</h3>' +
                     '</div>' +
                     '</div>' +
@@ -44,7 +44,7 @@ window.addEventListener('load', (event) => {
                     '<small class="fw-light">Group Member</small>' +
                     result +
                     '</div>' +
-                    '<div class="col-12 m-auto text-center  mt-3">' +
+                    '<div class="col-12 m-auto text-center mt-3">' +
                     '<button type="button" class="btn btn-danger me-2 leave-group">' +
                     '<i class="fas fa-sign-out-alt fa-fw"></i> Leave Group' +
                     '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_member">' +

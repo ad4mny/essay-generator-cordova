@@ -18,7 +18,7 @@ window.addEventListener('load', (event) => {
 
                     if (data[i].status != "Submitted") {
                         $('#display').append(
-                            '<div class="row shadow-sm border rounded-3 p-1 m-1">' +
+                            '<div class="row bg-white shadow-sm border rounded-3 p-1 m-1">' +
                             '<div class="col m-auto text-capitalize">' +
                             data[i].title +
                             '</div>' +
@@ -34,7 +34,7 @@ window.addEventListener('load', (event) => {
                         );
                     } else {
                         $('#display').append(
-                            '<div class="row shadow-sm border rounded-3 p-1 m-1">' +
+                            '<div class="row bg-white shadow-sm border rounded-3 p-1 m-1">' +
                             '<div class="col m-auto text-capitalize">' +
                             data[i].title +
                             '</div>' +

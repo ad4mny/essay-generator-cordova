@@ -48,7 +48,6 @@
         </div>
     </div>
 
-    <!-- Content  -->
     <div class="container mb-5">
 
         <div class="row my-3">
@@ -56,6 +55,10 @@
                 <h1 class="fw-bold display-3 mb-0">Groups</h1>
                 <p class="mb-0 text-muted fw-light">Manage your group.</p>
             </div>
+        </div>
+
+        <div class="row" id="display">
+            <!-- display registered group here -->
         </div>
 
         <div id="groups" style="display: none;">
@@ -76,7 +79,9 @@
                     <small class="text-danger" id="info_box"> </small>
                 </div>
             </form>
+
             <h1 class="text-center">or</h1>
+
             <form class="row gy-3 " action="" method="post" id="create_form">
                 <div class="col-12">
                     <h1 class="mb-0">Create</h1>
@@ -95,10 +100,6 @@
 
         </div>
 
-        <div class="row" id="display">
-            <!-- display registered group here -->
-        </div>
-
     </div>
 
     <div class="row">
@@ -109,6 +110,7 @@
         </div>
     </div>
 
+    <!-- add new member modal  -->
     <div class="modal fade" id="add_member" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
