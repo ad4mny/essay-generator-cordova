@@ -1,8 +1,9 @@
 window.addEventListener('load', (event) => {
 
+    // get user groups
     $.ajax({
         type: "POST",
-        url: webURL + "api/get_group",
+        url: webURL + "api/get_user_group",
         data: {
             userid: token.id
         },
@@ -54,7 +55,7 @@ window.addEventListener('load', (event) => {
                 );
 
             } else {
-                $('#group_form').show();
+                $('#groups').show();
             }
         },
         error: function () {
@@ -66,6 +67,7 @@ window.addEventListener('load', (event) => {
 
     });
 
+    // get student list
     $.ajax({
         type: "POST",
         url: webURL + "api/get_student_list",
@@ -78,14 +80,14 @@ window.addEventListener('load', (event) => {
 
                 for (var i = 0; i < data.length; i++) {
 
-                    $('#select_input').append(
+                    $('#select_member').append(
                         '<option value="' + data[i].id + '">' + data[i].fullname + '</option>'
                     );
                 }
 
             } else {
-                $('#select_input').append(
-                    '<option selected disabled>No available student</option>'
+                $('#select_member').append(
+                    '<option selected disabled>No available student to add</option>'
                 );
             }
         },
@@ -98,9 +100,76 @@ window.addEventListener('load', (event) => {
 
     });
 
+    // get group list
+    $.ajax({
+        type: "POST",
+        url: webURL + "api/get_group_list",
+        dataType: 'json',
+        beforeSend: function () {
+            $('#load_gif').show();
+        },
+        success: function (data) {
+            if (data != false) {
+
+                for (var i = 0; i < data.length; i++) {
+
+                    $('#select_group').append(
+                        '<option value="' + data[i].id + '">' + data[i].name + '</option>'
+                    );
+                }
+
+            } else {
+                $('#select_group').append(
+                    '<option selected disabled>No available group to join</option>'
+                );
+            }
+        },
+        error: function () {
+            $('#display').html('<div class="row"><div class="col"><p class="my-3 text-muted">Internal server error, please reload.</p></div></div>');
+        },
+        complete: function () {
+            $('#load_gif').hide();
+        }
+
+    });
 });
 
-$('#group_form').submit(function (e) {
+$('#join_form').submit(function (e) {
+    e.preventDefault();
+
+    var formData = new FormData(this);
+    formData.append('userid', token.id);
+
+    $.ajax({
+        type: "POST",
+        url: webURL + "api/join_group",
+        data: formData,
+        contentType: false,
+        cache: false,
+        processData: false,
+        dataType: 'JSON',
+        beforeSend: function () {
+            $('#load_gif').show();
+        },
+        success: function (data) {
+            if (data != false) {
+                location.replace('group.html');
+            } else {
+                alert('Failed to join group, try again.');
+            }
+        },
+        error: function () {
+            $('#display').append('<div class="row"><div class="col"><p class="my-3 text-muted">Internal server error, please reload.</p></div></div>');
+        },
+        complete: function () {
+            $('#load_gif').hide();
+        }
+    });
+
+});
+
+
+$('#create_form').submit(function (e) {
     e.preventDefault();
 
     var formData = new FormData(this);

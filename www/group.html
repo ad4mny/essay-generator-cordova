@@ -58,18 +58,42 @@
             </div>
         </div>
 
-        <form class="row gy-3  mx-2" action="" method="post" id="group_form" style="display: none;">
-            <div class="col-12">
-                <small>Group Name</small>
-                <input type="text" class="form-control" name="name" max="30" placeholder="Max 30 characters">
-            </div>
-            <div class="col-12 text-center">
-                <button type="submit" class="btn btn-primary" name="submit">Create</button>
-            </div>
-            <div class="col-auto">
-                <small class="text-danger" id="info_box"> </small>
-            </div>
-        </form>
+        <div id="groups" style="display: none;">
+
+            <form class="row gy-2" action="" method="post" id="join_form">
+                <div class="col-12">
+                    <h1 class="mb-0">Join</h1>
+                </div>
+                <div class="col-12">
+                    <small>Available Groups</small>
+                    <select class="form-select" name="group" id="select_group">
+                    </select>
+                </div>
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-primary" name="submit">Join</button>
+                </div>
+                <div class="col-10 offset-1 text-center border-bottom pb-2">
+                    <small class="text-danger" id="info_box"> </small>
+                </div>
+            </form>
+            <h1 class="text-center">or</h1>
+            <form class="row gy-3 " action="" method="post" id="create_form">
+                <div class="col-12">
+                    <h1 class="mb-0">Create</h1>
+                </div>
+                <div class="col-12">
+                    <small>Group Name</small>
+                    <input type="text" class="form-control" name="name" max="30" placeholder="Max 30 characters">
+                </div>
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-primary" name="submit">Create</button>
+                </div>
+                <div class="col-auto">
+                    <small class="text-danger" id="info_box"> </small>
+                </div>
+            </form>
+
+        </div>
 
         <div class="row" id="display">
             <!-- display registered group here -->
@@ -95,7 +119,7 @@
                         </div>
                         <div class="col-12">
                             <small>Group Member</small>
-                            <select class="form-select" name="member" id="select_input">
+                            <select class="form-select" name="member" id="select_member">
                             </select>
                         </div>
                         <div class="col-12 my-3 text-center">
