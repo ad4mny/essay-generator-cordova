@@ -11,22 +11,46 @@ window.addEventListener('load', (event) => {
             $('#load_gif').show();
         },
         success: function (data) {
+
             if (data != false) {
+
                 var result = "";
+                var fullname;
+
                 for (var i = 0; i < data.length; i++) {
-                    result += '<small>Group Member ' + (i + 1) + '</small>' +
-                        '<p class="fw-bold">' + data[i].phone + '</p>';
+                    if (data[i].fullname == null) {
+                        fullname = "No name";
+                    } else {
+                        fullname = data[i].fullname;
+                    }
+                    result +=
+                        '<div class="card shadow-sm border rounded-3 p-2 mb-2 mx-2">' +
+                        '<p class="text-capitalize mb-0">' + fullname + '</p>' +
+                        '<p class="mb-0">' + data[i].phone + '</p>' +
+                        '</div>';
                 }
 
+                $('#group_id').val(data[0].id);
+
                 $('#display').html(
-                    '          <h2>Your group</h2>' +
-                    '            <div class="col-12">' +
-                    '                <small>Group Name</small>' +
-                    '                <h4 class="fw-bold">' + data[0].name + '</h4>' +
-                    '            </div>' +
-                    '            <div class="col-12">' +
+                    '<div class="col-12">' +
+                    '<small class="fw-light">Group Name</small>' +
+                    '<div class="card shadow-sm border rounded-3 p-2 mb-2 mx-2">' +
+                    '<h3 class="text-capitalize mb-0">' + data[0].name + '</h3>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="col-12">' +
+                    '<small class="fw-light">Group Member</small>' +
                     result +
-                    '            </div>'
+                    '</div>' +
+                    '<div class="col-12 m-auto text-center  mt-3">' +
+                    '<button type="button" class="btn btn-danger me-2 leave-group">' +
+                    '<i class="fas fa-sign-out-alt fa-fw"></i> Leave Group' +
+                    '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_member">' +
+                    '<i class="fas fa-plus fa-fw"></i> Add Member' +
+                    '</button>' +
+                    '</button>' +
+                    '</div>'
                 );
 
             } else {
@@ -42,7 +66,37 @@ window.addEventListener('load', (event) => {
 
     });
 
+    $.ajax({
+        type: "POST",
+        url: webURL + "api/get_student_list",
+        dataType: 'json',
+        beforeSend: function () {
+            $('#load_gif').show();
+        },
+        success: function (data) {
+            if (data != false) {
 
+                for (var i = 0; i < data.length; i++) {
+
+                    $('#select_input').append(
+                        '<option value="' + data[i].id + '">' + data[i].fullname + '</option>'
+                    );
+                }
+
+            } else {
+                $('#select_input').append(
+                    '<option selected disabled>No available student</option>'
+                );
+            }
+        },
+        error: function () {
+            $('#display').html('<div class="row"><div class="col"><p class="my-3 text-muted">Internal server error, please reload.</p></div></div>');
+        },
+        complete: function () {
+            $('#load_gif').hide();
+        }
+
+    });
 
 });
 
@@ -64,7 +118,6 @@ $('#group_form').submit(function (e) {
             $('#load_gif').show();
         },
         success: function (data) {
-            // console.log(data);
             if (data != false) {
                 location.replace('group.html');
             } else {
@@ -81,12 +134,61 @@ $('#group_form').submit(function (e) {
 
 });
 
-var addMember = function () {
+$('#member_form').submit(function (e) {
+    e.preventDefault();
 
-    $('#member_input').append('<div class="col-12">' +
-        '<small>Group Member</small>' +
-        '<input type="text" class="form-control" name="member[]" placeholder="Enter member\'s contact number">' +
-        '</div>'
-    );
+    var formData = new FormData(this);
 
-};
+    $.ajax({
+        type: "POST",
+        url: webURL + "api/add_member",
+        data: formData,
+        contentType: false,
+        cache: false,
+        processData: false,
+        dataType: 'JSON',
+        beforeSend: function () {
+            $('#load_gif').show();
+        },
+        success: function (data) {
+            if (data != false) {
+                location.replace('group.html');
+            } else {
+                alert('Failed to add group member, try again.');
+            }
+        },
+        error: function () {
+            $('#display').append('<div class="row"><div class="col"><p class="my-3 text-muted">Internal server error, please reload.</p></div></div>');
+        },
+        complete: function () {
+            $('#load_gif').hide();
+        }
+    });
+
+});
+
+$('body').on('click', '.leave-group', function (e) {
+
+    $.ajax({
+        type: "POST",
+        url: webURL + "api/leave_group",
+        data: {
+            userid: token.id
+        },
+        dataType: 'json',
+        beforeSend: function () {
+            $('#load_gif').show();
+        },
+        success: function (data) {
+            location.reload();
+        },
+        error: function () {
+            $('#display').html('<div class="row"><div class="col"><p class="my-3 text-muted">Internal server error, please reload.</p></div></div>');
+        },
+        complete: function () {
+            $('#load_gif').hide();
+        }
+
+    });
+
+});

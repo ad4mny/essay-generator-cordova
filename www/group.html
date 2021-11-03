@@ -49,29 +49,22 @@
     </div>
 
     <!-- Content  -->
-    <div class="container">
+    <div class="container mb-5">
+
         <div class="row my-3">
             <div class="col">
                 <h1 class="fw-bold display-3 mb-0">Groups</h1>
                 <p class="mb-0 text-muted fw-light">Manage your group.</p>
             </div>
         </div>
-        <form class="row gy-3" action="" method="post" id="group_form" style="display: none;">
+
+        <form class="row gy-3  mx-2" action="" method="post" id="group_form" style="display: none;">
             <div class="col-12">
                 <small>Group Name</small>
                 <input type="text" class="form-control" name="name" max="30" placeholder="Max 30 characters">
             </div>
-            <div id="member_input">
-                <div class="col-12">
-                    <small>Group Member</small>
-                    <input type="text" class="form-control" name="member[]" placeholder="Enter member's contact number">
-                </div>
-            </div>
             <div class="col-12 text-center">
-                <button type="button" class="btn btn-secondary" onclick="addMember()">
-                    <i class="fas fa-plus fa-fw"></i> Add Member
-                </button>
-                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                <button type="submit" class="btn btn-primary" name="submit">Create</button>
             </div>
             <div class="col-auto">
                 <small class="text-danger" id="info_box"> </small>
@@ -79,7 +72,7 @@
         </form>
 
         <div class="row" id="display">
-
+            <!-- display registered group here -->
         </div>
 
     </div>
@@ -89,6 +82,31 @@
             id="load_gif" style="display: none;">
             <img src="css/load.gif" height="70" width="70">
             <p class="text-muted">Loading...</p>
+        </div>
+    </div>
+
+    <div class="modal fade" id="add_member" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form class="form-row g-4" action="" method="post" id="member_form">
+                        <div class="col-12">
+                            <p class="fw-bold">Choose member from the list</p>
+                        </div>
+                        <div class="col-12">
+                            <small>Group Member</small>
+                            <select class="form-select" name="member" id="select_input">
+                            </select>
+                        </div>
+                        <div class="col-12 my-3 text-center">
+                            <input type="hidden" name="groupid" id="group_id">
+                            <button type="submit" class="btn btn-primary" name="submit">
+                                <i class="fas fa-plus fa-fw"></i> Add
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
