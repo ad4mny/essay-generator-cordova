@@ -51,27 +51,26 @@ window.addEventListener('load', (event) => {
 
 });
 
-var submit = function () {
 
-    var data = JSON.parse(localStorage.getItem('vocab'));
+var submitOutline = function () {
+
     var parameter = new URLSearchParams(window.location.search)
     var essayid = parameter.get('essayid');
 
-    if (data != null) {
+    if (essayid != null) {
 
         $.ajax({
             type: "POST",
-            url: webURL + "api/set_vocabulary",
+            url: webURL + "api/submit_outline",
             data: {
-                essayid: essayid,
-                data: data
+                essayid: essayid
             },
             dataType: 'json',
             beforeSend: function () {
                 $('#load_gif').show();
             },
             success: function (data) {
-                console.log(data);
+                location.replace('submission.html');
             },
             error: function () {
                 $('#display').html('<div class="row"><div class="col"><p class="my-3 text-muted">Internal server error, please reload.</p></div></div>');
