@@ -19,7 +19,7 @@ var submitTitle = function () {
             if (data != false) {
                 location.replace('submission.html');
             } else {
-                alert('Failed to submit email title, try again later.');
+                alert('Failed to submit email title, please join a group.');
             }
         },
         error: function () {

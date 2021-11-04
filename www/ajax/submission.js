@@ -51,7 +51,7 @@ window.addEventListener('load', (event) => {
                 $('#display').append(
                     '<div class="row bg-white shadow-sm border rounded-3 p-1 m-1">' +
                     '<div class="col m-auto ">' +
-                    '<p class="text-muted mb-0">No essays submissions has been found for this group.</p>'+
+                    '<p class="text-muted mb-0">No essays submissions has been found.</p>'+
                     '</div>' +
                     '</div>'
                 );
