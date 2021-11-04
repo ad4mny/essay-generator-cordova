@@ -1,4 +1,4 @@
-$('body').on('click', '.login', function () {
+var login =  function () {
 
     var phone = $("#phone").val();
     var password = $("#password").val();
@@ -41,9 +41,9 @@ $('body').on('click', '.login', function () {
         alert('Invalid username or password character.');
     }
 
-});
+};
 
-$('body').on('click', '.register', function () {
+var register = function () {
 
     var name = $("#name").val();
     var phone = $("#phone").val();
@@ -87,7 +87,7 @@ $('body').on('click', '.register', function () {
 
     }
 
-});
+};
 
 var comparePassword = function () {
 
