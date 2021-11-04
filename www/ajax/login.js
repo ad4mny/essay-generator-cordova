@@ -1,4 +1,4 @@
-var login = function () {
+$('body').on('click', '.login', function () {
 
     var phone = $("#phone").val();
     var password = $("#password").val();
@@ -12,12 +12,13 @@ var login = function () {
                 phone: phone,
                 password: password
             },
-            dataType: 'JSON',
+            dataType: 'json',
             beforeSend: function () {
                 $('#load_gif').show();
             },
             success: function (data) {
-                if (data != false) {
+                // console.log(data);
+                if (data != null) {
                     localStorage.setItem('token', JSON.stringify(data));
                     location.replace('index.html');
                 } else {
@@ -25,7 +26,7 @@ var login = function () {
                 }
             },
             error: function () {
-                $('#info_box').append('<div class="row">' +
+                $('#info_box').html('<div class="row">' +
                     '<div class="col">' +
                     '<p class="my-3 text-muted">Internal server error, please reload.</p>' +
                     '</div>' +
@@ -38,11 +39,11 @@ var login = function () {
 
     } else {
         alert('Invalid username or password character.');
-
     }
-};
 
-var register = function () {
+});
+
+$('body').on('click', '.register', function () {
 
     var name = $("#name").val();
     var phone = $("#phone").val();
@@ -73,7 +74,7 @@ var register = function () {
                 }
             },
             error: function () {
-                $('#info_box').append('<div class="row">' +
+                $('#info_box').html('<div class="row">' +
                     '<div class="col">' +
                     '<p class="my-3 text-muted">Internal server error, please reload.</p>' +
                     '</div>' +
@@ -86,7 +87,7 @@ var register = function () {
 
     }
 
-};
+});
 
 var comparePassword = function () {
 
@@ -98,4 +99,3 @@ var comparePassword = function () {
         return true;
     }
 };
-
