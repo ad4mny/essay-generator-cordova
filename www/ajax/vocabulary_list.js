@@ -30,6 +30,7 @@ window.addEventListener('load', (event) => {
             existing_vocab = [];
 
             if (outlines != null) {
+
                 for (var i = 0; i < outlines.length; i++) {
                     if (outlines[i].paragraph == paragraph) {
                         existing_vocab.push(outlines[i].id);
@@ -39,22 +40,20 @@ window.addEventListener('load', (event) => {
                             '</button>');
                     }
                 }
+                
             }
 
             if (data != false) {
+
                 for (var i = 0; i < data.length; i++) {
-                    if (existing_vocab.indexOf(data[i].id) === -1) {
-
-                        $('#vocab_list').append('<button class="col-auto btn border m-1 add-vocab" id="' + data[i].id + '" value="' + data[i].word + '">' +
-                            data[i].word +
-                            '</button>');
-
-                    }
+                    $('#vocab_list').append('<button class="col-auto btn border m-1 add-vocab" id="' + data[i].id + '" value="' + data[i].word + '">' +
+                        data[i].word +
+                        '</button>');
                 }
+
             } else {
                 $('#vocab_list').append('<p class="text-muted">No word list found for this type of essay yet.</p>');
             }
-
 
         },
         error: function () {
@@ -80,13 +79,11 @@ $('body').on('click', '.add-vocab', function (e) {
         existing_vocab.push(id);
         localStorage.setItem('vocab', JSON.stringify(existing_vocab));
     }
-    console.log(JSON.parse(localStorage.getItem('vocab')));
 
     $('#vocab_selected').append(
         '<button class="col-auto btn border m-1 remove-vocab" id="' + id + '" value="' + word + '">' +
         word +
         '</button>');
-    $(this).remove();
 
 });
 
@@ -100,12 +97,6 @@ $('body').on('click', '.remove-vocab', function (e) {
         localStorage.setItem('vocab', JSON.stringify(existing_vocab));
     }
 
-    console.log(JSON.parse(localStorage.getItem('vocab')));
-
-    $('#vocab_list').append(
-        '<button class="col-auto btn border m-1 add-vocab" id="' + id + '" value="' + word + '">' +
-        word +
-        '</button>');
     $(this).remove();
 
 });
