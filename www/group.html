@@ -7,36 +7,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Essay Generator</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom-bootstrap.min.css">
     <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="bg-light">
-    <!-- Mobile Toolbar -->
-    <div class="bg-white d-inline-flex w-100 border-top shadow-sm ">
-        <div class="p-2 flex-fill">
-            <h4 class="mb-0  text-center py-1">Essay Generator</h4>
+<body class="bg-white">
+    <!-- Appbar -->
+    <div class="bg-white sticky-top border-bottom">
+        <div class="d-flex justify-content-center align-items-center">
+            <img src="img/logo.jpg" width="150px">
         </div>
     </div>
 
-    <!-- Mobile Appbar -->
-    <div class="bg-white fixed-bottom d-inline-flex w-100 border-top shadow-sm ">
+    <!-- Navigation -->
+    <div class="bg-white fixed-bottom d-block d-lg-none d-inline-flex shadow m-3" style="border-radius: 1em;">
         <div class="p-2 flex-fill">
-            <a href="#" class="btn text-primary">
+            <a href="#" class="btn text-secondary">
                 <i class="fas fa-user-friends fa-fw fa-lg"></i>
             </a>
         </div>
         <div class="p-2 flex-fill">
             <a href="vocabulary.html" class="btn">
-                <i class="fas fa-underline fa-fw fa-lg"></i>
-            </a>
-        </div>
-        <div class="p-2 flex-fill">
-            <a href="#" class="btn text-muted">
                 <i class="fas fa-align-left fa-fw fa-lg"></i>
             </a>
         </div>
         <div class="p-2 flex-fill">
-            <a href="submission.html" class="btn ">
+            <a href="submission.html" class="btn">
                 <i class="fas fa-file-import fa-fw fa-lg"></i>
             </a>
         </div>
@@ -48,22 +45,17 @@
     </div>
 
     <!-- Content  -->
-    <div class="container mb-5">
-
+    <div class="container-fluid" style="margin-bottom: 70px;">
         <div class="row my-3">
             <div class="col">
-                <h1 class="fw-bold display-3 mb-0">Groups</h1>
-                <p class="mb-0 text-muted fw-light">Manage your group.</p>
+                <h3 class="fw-bold mb-0 text-primary">Groups</h3>
+                <p class="mb-0 text-muted fw-light">Manage your grouping.</p>
             </div>
         </div>
-
         <div id="groups" style="display: none;">
-
-            <form class="row gy-2" action="" method="post" id="join_form">
+            <form class="row gy-3" action="" method="post" id="join_form">
                 <div class="col-12">
                     <h1 class="mb-0">Join</h1>
-                </div>
-                <div class="col-12">
                     <small>Available Groups</small>
                     <select class="form-select" name="group" id="select_group">
                     </select>
@@ -71,18 +63,16 @@
                 <div class="col-12 text-center">
                     <button type="submit" class="btn btn-primary" name="submit">Join</button>
                 </div>
-                <div class="col-10 offset-1 text-center border-bottom pb-2">
+                <div class="col-12 text-center pb-2">
                     <small class="text-danger" id="info_box"> </small>
                 </div>
+                <div class="col-10 offset-1 text-center border-top">
+                    <h3 class="text-center mb-0">or</h3>
+                </div>
             </form>
-
-            <h1 class="text-center">or</h1>
-
-            <form class="row gy-3 " action="" method="post" id="create_form">
+            <form class="row gy-3" action="" method="post" id="create_form">
                 <div class="col-12">
                     <h1 class="mb-0">Create</h1>
-                </div>
-                <div class="col-12">
                     <small>Group Name</small>
                     <input type="text" class="form-control" name="name" max="30" placeholder="Max 30 characters">
                 </div>
@@ -93,13 +83,8 @@
                     <small class="text-danger" id="info_box"> </small>
                 </div>
             </form>
-
         </div>
-
-        <div class="row pb-5" id="display">
-            <!-- display registered group here -->
-        </div>
-
+        <div class="row my-3" id="display"></div>
     </div>
 
     <div class="row">
@@ -135,7 +120,7 @@
             </div>
         </div>
     </div>
-    
+
     <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="cordova.js"></script>

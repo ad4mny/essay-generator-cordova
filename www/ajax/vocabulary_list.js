@@ -1,17 +1,17 @@
 var existing_vocab = [];
+var essayid = '';
+var paragraph = '';
 
 window.addEventListener('load', (event) => {
 
     var parameter = new URLSearchParams(window.location.search);
-    var essayid = parameter.get('essayid');
-    var paragraph = parameter.get('paragraph');
+    essayid = parameter.get('essayid');
+    paragraph = parameter.get('paragraph');
 
-    if (paragraph == 1) {
+    if (paragraph == 1)
         $('#title').html('Introduction');
-
-    } else {
+    else
         $('#title').html('Email Body');
-    }
 
     $.ajax({
         type: "POST",
@@ -29,9 +29,8 @@ window.addEventListener('load', (event) => {
             var outlines = JSON.parse(localStorage.getItem('outline'));
             existing_vocab = [];
 
-            if (outlines != null) {
-
-                for (var i = 0; i < outlines.length; i++) {
+            if (outlines != null)
+                for (var i = 0; i < outlines.length; i++)
                     if (outlines[i].paragraph == paragraph) {
                         existing_vocab.push(outlines[i].id);
                         $('#vocab_selected').append(
@@ -39,21 +38,14 @@ window.addEventListener('load', (event) => {
                             outlines[i].word +
                             '</button>');
                     }
-                }
-                
-            }
 
-            if (data != false) {
-
-                for (var i = 0; i < data.length; i++) {
-                    $('#vocab_list').append('<button class="col-auto btn border m-1 add-vocab" id="' + data[i].id + '" value="' + data[i].word + '">' +
-                        data[i].word +
+            if (data != false)
+                for (var i = 0; i < data.length; i++)
+                    $('#vocab_list').append(
+                        '<button class="col-auto btn border m-1 add-vocab" id="' + data[i].id + '" value="' + data[i].word + '">' + data[i].word +
                         '</button>');
-                }
-
-            } else {
+            else
                 $('#vocab_list').append('<p class="text-muted">No word list found for this type of essay yet.</p>');
-            }
 
         },
         error: function () {
@@ -64,7 +56,6 @@ window.addEventListener('load', (event) => {
         }
 
     });
-
 
 });
 
@@ -80,10 +71,7 @@ $('body').on('click', '.add-vocab', function (e) {
         localStorage.setItem('vocab', JSON.stringify(existing_vocab));
     }
 
-    $('#vocab_selected').append(
-        '<button class="col-auto btn border m-1 remove-vocab" id="' + id + '" value="' + word + '">' +
-        word +
-        '</button>');
+    $('#vocab_selected').append('<button class="col-auto btn border m-1 remove-vocab" id="' + id + '" value="' + word + '">' + word + '</button>');
 
 });
 
@@ -101,13 +89,17 @@ $('body').on('click', '.remove-vocab', function (e) {
 
 });
 
+var back = function () {
+    localStorage.removeItem('vocab');
+    location.replace('outline.html?essayid=' + essayid);
+}
+
 var reset = function () {
     localStorage.removeItem('vocab');
     location.reload();
 }
 
 var next = function () {
-
     var data = JSON.parse(localStorage.getItem('vocab'));
     localStorage.removeItem('vocab');
     var parameter = new URLSearchParams(window.location.search)
@@ -129,12 +121,10 @@ var next = function () {
                 $('#load_gif').show();
             },
             success: function (data) {
-                if (data != false) {
+                if (data != false)
                     location.replace('outline.html?essayid=' + essayid);
-
-                } else {
+                else
                     alert('Error while adding vocabularies to essay outline, try again.');
-                }
             },
             error: function () {
                 $('#display').html('<div class="row"><div class="col"><p class="my-3 text-muted">Internal server error, please reload.</p></div></div>');
@@ -144,8 +134,6 @@ var next = function () {
             }
 
         });
-
-    } else {
-        alert('Please select atleast one word to continue.')
-    }
+    } else
+        alert('Please select atleast one word to continue.');
 }

@@ -7,36 +7,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Essay Generator</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom-bootstrap.min.css">
     <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="bg-light">
-    <!-- Mobile Toolbar -->
-    <div class="bg-white d-inline-flex w-100 border-top shadow-sm ">
-        <div class="p-2 flex-fill">
-            <h4 class="mb-0  text-center py-1">Essay Generator</h4>
+<body class="bg-white">
+    <!-- Appbar -->
+    <div class="bg-white sticky-top border-bottom">
+        <div class="d-flex justify-content-center align-items-center">
+            <img src="img/logo.jpg" width="150px">
         </div>
     </div>
 
-    <!-- Mobile Appbar -->
-    <div class="bg-white fixed-bottom d-inline-flex w-100 border-top shadow-sm ">
+    <!-- Navigation -->
+    <div class="bg-white fixed-bottom d-block d-lg-none d-inline-flex shadow m-3" style="border-radius: 1em;">
         <div class="p-2 flex-fill">
             <a href="group.html" class="btn">
                 <i class="fas fa-user-friends fa-fw fa-lg"></i>
             </a>
         </div>
         <div class="p-2 flex-fill">
-            <a href="#" class="btn text-primary">
-                <i class="fas fa-underline fa-fw fa-lg"></i>
-            </a>
-        </div>
-        <div class="p-2 flex-fill">
-            <a href="" class="btn text-muted">
+            <a href="#" class="btn text-secondary">
                 <i class="fas fa-align-left fa-fw fa-lg"></i>
             </a>
         </div>
         <div class="p-2 flex-fill">
-            <a href="submission.html" class="btn ">
+            <a href="submission.html" class="btn">
                 <i class="fas fa-file-import fa-fw fa-lg"></i>
             </a>
         </div>
@@ -48,14 +45,13 @@
     </div>
 
     <!-- Content  -->
-    <div class="container">
+    <div class="container-fluid" id="display" style="margin-bottom: 70px;">
         <div class="row my-3">
             <div class="col">
-                <h1 class="fw-bold display-3 mb-0">Essays</h1>
+                <h3 class="fw-bold mb-0 text-primary">Essay</h3>
                 <p class="mb-0 text-muted fw-light">Add and submit a new essay title.</p>
             </div>
         </div>
-
         <div class="row g-3 ">
             <div class="col-12">
                 <small>Title</small>
@@ -72,7 +68,7 @@
                 </select>
             </div>
             <div class="col-12 text-center">
-                <button type="button" class="btn btn-primary" onclick="submitTitle()">Next</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="submitTitle()">Create Essay</button>
             </div>
             <div class="col-auto" id="info_box">
                 <!-- Error information  -->
@@ -93,7 +89,7 @@
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="ajax/app.js"></script>
     <script type="text/javascript" src="ajax/vocabulary.js"></script>
-    
+
 </body>
 
 </html>

@@ -7,32 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Essay Generator</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom-bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <!-- Content  -->
     <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="row g-3 p-4">
+        <div class="row g-3 px-3">
             <div class="col-12 text-center">
-                <h1 class="mb-0">
-                    Login
-                </h1>
+                <img src="img/logo.jpg" width="250px">
+            </div>
+            <div class="col-12 text-center">
+                Login
             </div>
             <div class="col-12">
-                <small>Phone Number</small>
                 <input type="text" class="form-control" id="phone" placeholder="Your phone number">
             </div>
             <div class="col-12">
-                <small>Password</small>
                 <input type="password" class="form-control" id="password" placeholder="Your password">
             </div>
+            <div class="col-10 offset-1 border-bottom"></div>
             <div class="col-12 text-center">
-                <a href="register.html" type="button" class="btn btn-secondary">Register</a>
-                <button type="button" class="btn btn-primary" onclick="login()">Login</button>
+                <a href="register.html" type="button" class="btn btn-sm">Create an Account</a>
             </div>
-            <div class="col-auto" id="info_box">
-
+            <div class="col-12 text-center d-grid">
+                <button type="button" class="btn btn-primary btn-sm" onclick="login()">Login</button>
             </div>
+            <div class="col-auto" id="info_box"></div>
         </div>
     </div>
 
@@ -49,7 +52,7 @@
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="ajax/app.js"></script>
     <script type="text/javascript" src="ajax/login.js"></script>
-    
+
 </body>
 
 </html>

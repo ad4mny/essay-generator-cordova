@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="bg-white">
+<body class="bg-light">
     <!-- Appbar -->
     <div class="bg-white sticky-top border-bottom">
         <div class="d-flex justify-content-center align-items-center">
@@ -23,12 +23,12 @@
     <!-- Navigation -->
     <div class="bg-white fixed-bottom d-block d-lg-none d-inline-flex shadow m-3" style="border-radius: 1em;">
         <div class="p-2 flex-fill">
-            <a href="group.html" class="btn">
+            <a href="group.html" class="btn text-secondary">
                 <i class="fas fa-user-friends fa-fw fa-lg"></i>
             </a>
         </div>
         <div class="p-2 flex-fill">
-            <a href="vocabulary.html" class="btn text-secondary">
+            <a href="vocabulary.html" class="btn">
                 <i class="fas fa-align-left fa-fw fa-lg"></i>
             </a>
         </div>
@@ -45,37 +45,23 @@
     </div>
 
     <!-- Content  -->
-    <div class="container-fluid" id="display" style="margin-bottom: 70px;">
+    <div class="container-fluid" style="margin-bottom: 70px;">
         <div class="row my-3">
             <div class="col">
-                <h3 class="fw-bold mb-0 text-primary">Vocabulary</h3>
-                <p class="mb-0 text-muted fw-light">Add vocabulary into the essay.</p>
+                <h3 class="fw-bold mb-0 text-primary">Essay</h3>
+                <p class="mb-0 text-muted fw-light">Your full essay outline.</p>
             </div>
         </div>
         <div class="row g-3 ">
             <div class="col-12">
-                <small>Word List</small>
-                <div class="card p-3">
-                    <div class="row" id="vocab_list">
-                        <!-- Vocabulary list here  -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <small id="title"></small>
-                <div class="card p-3">
-                    <div class="row " id="vocab_selected">
-                        <!-- Chosen vocab here  -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 text-center">
-                <a href="#" class="btn btn-secondary btn-sm" onclick="back()">Back</a>
-                <a href="#" class="btn btn-danger btn-sm" onclick="reset()">Reset</a>
-                <a href="#" class="btn btn-primary btn-sm" onclick="next()">Next</a>
+                <p id="introduction"></p>
+                <p id="email_body"></p>
             </div>
             <div class="col-auto">
                 <small class="text-danger" id="info_box"></small>
+            </div>
+            <div class="col-12 text-center">
+                <a href="#" class="btn btn-secondary btn-sm" onclick="back()">Back</a>
             </div>
         </div>
     </div>
@@ -92,7 +78,7 @@
     <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="ajax/app.js"></script>
-    <script type="text/javascript" src="ajax/vocabulary_list.js"></script>
+    <script type="text/javascript" src="ajax/essay.js"></script>
 
 </body>
 

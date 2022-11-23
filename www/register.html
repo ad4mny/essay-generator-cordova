@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Essay Generator</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom-bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -14,32 +16,29 @@
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="row g-3 p-4">
             <div class="col-12 text-center">
-                <h1 class="mb-0">
-                    Register
-                </h1>
+                <img src="img/logo.jpg" width="250px">
+            </div>
+            <div class="col-12 text-center">
+                Create Account
             </div>
             <div class="col-12">
-                <small>Full Name (as in MyKad)</small>
                 <input type="text" class="form-control" id="name" placeholder="Enter your full name">
             </div>
             <div class="col-12">
-                <small>Phone Number (Mobile)</small>
                 <input type="text" class="form-control" id="phone" placeholder="Enter your phone number">
             </div>
             <div class="col-12">
-                <small>Password</small>
                 <input type="password" class="form-control" id="password" placeholder="Create a password">
             </div>
             <div class="col-12">
-                <small>Confirm Password</small>
                 <input type="password" class="form-control" id="c_password" placeholder="Confirm your password">
             </div>
+            <div class="col-10 offset-1 border-bottom"></div>
             <div class="col-12 text-center">
-                <button type="button" class="btn btn-primary " onclick="register()">Register</button>
-            </div>  
-            <div class="col-12 text-center">
-                <a href="login.html"  class="text-primary">Back to login</a>
-
+                <a href="login.html" type="button" class="btn btn-sm">Back to Login</a>
+            </div>
+            <div class="col-12 text-center d-grid">
+                <button type="button" class="btn btn-primary btn-sm" onclick="register()">Register</button>
             </div>
             <div class="col-auto">
                 <small class="text-danger" id="info_box"></small>
@@ -60,7 +59,7 @@
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="ajax/app.js"></script>
     <script type="text/javascript" src="ajax/login.js"></script>
-    
+
 </body>
 
 </html>

@@ -3,9 +3,9 @@ window.addEventListener('load', (event) => {
     var parameter = new URLSearchParams(window.location.search);
     var essayid = parameter.get('essayid');
 
-    $('#update_intro_btn').html('<a href="vocabulary_list.html?essayid=' + essayid + '&paragraph=1" class="btn btn-secondary">Update Introduction</a>');
+    $('#update_intro_btn').html('<a href="vocabulary_list.html?essayid=' + essayid + '&paragraph=1" class="btn btn-secondary btn-sm">Update Introduction</a>');
 
-    $('#update_body_btn').html('<a href="vocabulary_list.html?essayid=' + essayid + '&paragraph=2" class="btn btn-secondary">Update Body</a>');
+    $('#update_body_btn').html('<a href="vocabulary_list.html?essayid=' + essayid + '&paragraph=2" class="btn btn-secondary btn-sm">Update Body</a>');
 
     $.ajax({
         type: "POST",
@@ -18,21 +18,22 @@ window.addEventListener('load', (event) => {
             $('#load_gif').show();
         },
         success: function (data) {
-
             if (data != false) {
                 localStorage.setItem('outline', JSON.stringify(data));
 
                 for (var i = 0; i < data.length; i++) {
-                    if (data[i].paragraph == 1) {
-                        $('#introduction').append('<span class="col-auto btn border m-1">' +
+                    if (data[i].paragraph == 1)
+                        $('#introduction').append(
+                            '<span class="col-auto btn border m-1">' +
                             data[i].word +
-                            '</span>');
-                    } else {
-                        $('#email_body').append('<span class="col-auto btn border m-1">' +
+                            '</span>'
+                        );
+                    else
+                        $('#email_body').append(
+                            '<span class="col-auto btn border m-1">' +
                             data[i].word +
-                            '</span>');
-                    }
-
+                            '</span>'
+                        );
                 }
             } else {
                 localStorage.removeItem('outline');

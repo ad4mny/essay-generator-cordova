@@ -37,17 +37,17 @@ window.addEventListener('load', (event) => {
                     '<div class="col-12">' +
                     '<small class="fw-light">Group Name</small>' +
                     '<div class="border rounded-3 p-2 m-1 bg-white">' +
-                    '<h3 class="text-capitalize mb-0">' + data[0].name + '</h3>' +
+                    '<h6 class="text-capitalize mb-0">' + data[0].name + '</h6>' +
                     '</div>' +
                     '</div>' +
                     '<div class="col-12">' +
                     '<small class="fw-light">Group Member</small>' +
                     result +
                     '</div>' +
-                    '<div class="col-12 m-auto text-center mt-3">' +
-                    '<button type="button" class="btn btn-danger me-2 leave-group">' +
+                    '<div class="col-12 mt-4 text-center">' +
+                    '<button type="button" class="btn btn-danger me-2 btn-sm leave-group">' +
                     '<i class="fas fa-sign-out-alt fa-fw"></i> Leave Group' +
-                    '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_member">' +
+                    '<button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#add_member">' +
                     '<i class="fas fa-plus fa-fw"></i> Add Member' +
                     '</button>' +
                     '</button>' +
