@@ -13,3 +13,17 @@ body {
     min-height: 100vh;
     scroll-behavior: smooth;
 }
+
+.login-bg {
+    background-image: url(../img/logo.jpg);
+    background-position: 10% 20%;
+    background-repeat: no-repeat;
+    background-size: auto;
+    height: 100vh;
+    width: 100%;
+}
+
+.blur {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(40px);
+}
