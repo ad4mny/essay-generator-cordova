@@ -24,15 +24,15 @@ window.addEventListener('load', (event) => {
                 // loop for intro outline
                 $.each(data.intro, function (key, value) {
                     if (first_word) {
-                        $('#introduction').append(value.word);
+                        $('#email_introduction').append(value.word);
                         first_word = false;
                     } else {
                         if (previous_word === '.')
-                            $('#introduction').append(' ' + value.word);
+                            $('#email_introduction').append(' ' + value.word);
                         else if (value.word === '.' || value.word === ',')
-                            $('#introduction').append(value.word.toLowerCase());
+                            $('#email_introduction').append(value.word.toLowerCase());
                         else
-                            $('#introduction').append(' ' + value.word.toLowerCase());
+                            $('#email_introduction').append(' ' + value.word.toLowerCase());
                     }
                     previous_word = value.word;
                 });
@@ -56,9 +56,28 @@ window.addEventListener('load', (event) => {
                     previous_word = value.word;
                 });
 
+                first_word = true;
+                previous_word = '';
+
+                // loop for body outline
+                $.each(data.conclusion, function (key, value) {
+                    if (first_word) {
+                        $('#email_conclusion').append(value.word);
+                        first_word = false;
+                    } else {
+                        if (previous_word === '.')
+                            $('#email_conclusion').append(' ' + value.word);
+                        else if (value.word === '.' || value.word === ',')
+                            $('#email_conclusion').append(value.word.toLowerCase());
+                        else
+                            $('#email_conclusion').append(' ' + value.word.toLowerCase());
+                    }
+                    previous_word = value.word;
+                });
             } else {
-                $('#introduction').html('<p class="text-muted">No essay outline found.</p>');
-                $('#email_body').html('<p class="text-muted">No essay outline found.</p>');
+                $('#email_introduction').html('<p class="text-muted">No introduction outline found.</p>');
+                $('#email_body').html('<p class="text-muted">No body outline found.</p>');
+                $('#email_conclusion').html('<p class="text-muted">No conclusion outline found.</p>');
             }
         },
         error: function () {

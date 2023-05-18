@@ -9,9 +9,11 @@ window.addEventListener('load', (event) => {
     paragraph = parameter.get('paragraph');
 
     if (paragraph == 1)
-        $('#title').html('Introduction');
+        $('#title').html('Your introduction paragraph');
+    else if (paragraph == 2)
+        $('#title').html('Your body paragraph');
     else
-        $('#title').html('Email Body');
+        $('#title').html('Your conclusion paragraph');
 
     $.ajax({
         type: "POST",
@@ -29,7 +31,7 @@ window.addEventListener('load', (event) => {
             var outlines = JSON.parse(localStorage.getItem('outline'));
             existing_vocab = [];
 
-            if (outlines != null)
+            if (outlines != null ) {
                 for (var i = 0; i < outlines.length; i++)
                     if (outlines[i].paragraph == paragraph) {
                         existing_vocab.push(outlines[i].id);
@@ -38,14 +40,16 @@ window.addEventListener('load', (event) => {
                             outlines[i].word +
                             '</button>');
                     }
+            }
 
-            if (data != false)
+            if (data != false) {
                 for (var i = 0; i < data.length; i++)
                     $('#vocab_list').append(
                         '<button class="col-auto btn border m-1 add-vocab" id="' + data[i].id + '" value="' + data[i].word + '">' + data[i].word +
                         '</button>');
+            }
             else
-                $('#vocab_list').append('<p class="text-muted">No word list found for this type of essay yet.</p>');
+                $('#vocab_list').append('<div class="p-3 text-muted"> No available vocabulary to choose.</div>');
 
         },
         error: function () {

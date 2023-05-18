@@ -7,6 +7,8 @@ window.addEventListener('load', (event) => {
 
     $('#update_body_btn').html('<a href="vocabulary_list.html?essayid=' + essayid + '&paragraph=2" class="btn btn-secondary btn-sm">Update Body</a>');
 
+    $('#update_conclusion_btn').html('<a href="vocabulary_list.html?essayid=' + essayid + '&paragraph=3" class="btn btn-secondary btn-sm">Update Conclusion</a>');
+
     $.ajax({
         type: "POST",
         url: webURL + "api/get_outline",
@@ -18,27 +20,38 @@ window.addEventListener('load', (event) => {
             $('#load_gif').show();
         },
         success: function (data) {
+
             if (data != false) {
                 localStorage.setItem('outline', JSON.stringify(data));
 
                 for (var i = 0; i < data.length; i++) {
-                    if (data[i].paragraph == 1)
-                        $('#introduction').append(
+                    if (data[i].paragraph == 1) {
+                        $('#email_introduction').append(
                             '<span class="col-auto btn border m-1">' +
                             data[i].word +
                             '</span>'
                         );
-                    else
+                    }
+                    else if (data[i].paragraph == 2) {
                         $('#email_body').append(
                             '<span class="col-auto btn border m-1">' +
                             data[i].word +
                             '</span>'
                         );
+                    }
+                    else {
+                        $('#email_conclusion').append(
+                            '<span class="col-auto btn border m-1">' +
+                            data[i].word +
+                            '</span>'
+                        );
+                    }
                 }
             } else {
+                $('#email_introduction').html('<div class="p-3 text-muted"> No introduction outline yet.</div>');
+                $('#email_body').html('<div class="p-3 text-muted"> No body outline yet.</div>');
+                $('#email_conclusion').html('<div class="p-3 text-muted"> No conclusion outline yet.</div>');
                 localStorage.removeItem('outline');
-                $('#introduction').html('<p class="text-muted">No essay outline yet.</p>');
-                $('#email_body').html('<p class="text-muted">No essay outline yet.</p>');
             }
         },
         error: function () {
