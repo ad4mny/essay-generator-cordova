@@ -12,15 +12,15 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="login-bg">
     <!-- Content  -->
-    <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="row g-3 px-3">
+    <div class="d-flex justify-content-center align-items-center vh-100 blur">
+        <div class="row g-3 p-2 m-2 bg-white rounded-5 shadow">
             <div class="col-12 text-center">
                 <img src="img/logo.jpg" width="250px">
             </div>
-            <div class="col-12 text-center">
-                Login
+            <div class="col-12 text-muted fw-bold">
+                Hello, <span class="greetings">Good Day!</span>
             </div>
             <div class="col-12">
                 <input type="text" class="form-control" id="phone" placeholder="Your phone number">
@@ -32,10 +32,10 @@
             <div class="col-12 text-center">
                 <a href="register.html" type="button" class="btn btn-sm">Create an Account</a>
             </div>
-            <div class="col-12 text-center d-grid">
-                <button type="button" class="btn btn-primary btn-sm" onclick="login()">Login</button>
+            <div class="col-12 text-center">
+                <button type="button" class="btn btn-primary btn-sm px-5" onclick="login()">Login</button>
             </div>
-            <div class="col-auto" id="info_box"></div>
+            <div class="col-12" id="info_box"></div>
         </div>
     </div>
 
