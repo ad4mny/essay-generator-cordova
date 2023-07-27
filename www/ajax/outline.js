@@ -27,21 +27,21 @@ window.addEventListener('load', (event) => {
                 for (var i = 0; i < data.length; i++) {
                     if (data[i].paragraph == 1) {
                         $('#email_introduction').append(
-                            '<span class="col-auto btn border m-1">' +
+                            '<span class="col-auto btn border p-2 rounded-4 text-left">' +
                             data[i].word +
                             '</span>'
                         );
                     }
                     else if (data[i].paragraph == 2) {
                         $('#email_body').append(
-                            '<span class="col-auto btn border m-1">' +
+                            '<span class="col-auto btn border p-2 rounded-4 text-left">' +
                             data[i].word +
                             '</span>'
                         );
                     }
                     else {
                         $('#email_conclusion').append(
-                            '<span class="col-auto btn border m-1">' +
+                            '<span class="col-auto btn border p-2 rounded-4 text-left">' +
                             data[i].word +
                             '</span>'
                         );
