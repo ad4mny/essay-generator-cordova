@@ -36,17 +36,17 @@ window.addEventListener('load', (event) => {
                     if (outlines[i].paragraph == paragraph) {
                         existing_vocab.push(outlines[i].id);
                         $('#vocab_selected').append(
-                            '<button class="col-auto btn border m-1 remove-vocab" id="' + outlines[i].id + '" value="' + outlines[i].word + '">' +
+                            '<span class="col-auto border rounded-4 p-2 text-left remove-vocab" id="' + outlines[i].id + '" value="' + outlines[i].word + '">' +
                             outlines[i].word +
-                            '</button>');
+                            '</span>');
                     }
             }
 
             if (data != false) {
                 for (var i = 0; i < data.length; i++)
                     $('#vocab_list').append(
-                        '<button class="col-auto btn border m-1 add-vocab" id="' + data[i].id + '" value="' + data[i].word + '">' + data[i].word +
-                        '</button>');
+                        '<span class="col-auto btn border rounded-4 p-2 text-left add-vocab" id="' + data[i].id + '" value="' + data[i].word + '">' + data[i].word +
+                        '</span>');
             }
             else
                 $('#vocab_list').append('<div class="p-3 text-muted"> No available vocabulary to choose.</div>');
@@ -75,7 +75,7 @@ $('body').on('click', '.add-vocab', function (e) {
         localStorage.setItem('vocab', JSON.stringify(existing_vocab));
     }
 
-    $('#vocab_selected').append('<button class="col-auto btn border m-1 remove-vocab" id="' + id + '" value="' + word + '">' + word + '</button>');
+    $('#vocab_selected').append('<button class="col-auto btn border rounded-4 text-left p-2 remove-vocab" id="' + id + '" value="' + word + '">' + word + '</button>');
 
 });
 
