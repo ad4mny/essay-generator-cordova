@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Essay Generator</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/custom-bootstrap.min.css">
@@ -55,15 +55,15 @@
         <div class="row g-3 ">
             <div class="col-12">
                 <div>Available word list to choose</div>
-                <div class="card">
-                    <div class="d-flex flex-wrap" id="vocab_list">
+                <div class="card p-1"  style="height: 30vh;">
+                    <div class="d-flex flex-wrap overflow-y-auto gap-1" id="vocab_list">
                     </div>
                 </div>
             </div>
             <div class="col-12">
                 <div id="title"></div>
-                <div class="card">
-                    <div class="d-flex flex-wrap" id="vocab_selected">
+                <div class="card p-1" >
+                    <div class="d-flex flex-wrap gap-1" id="vocab_selected">
                     </div>
                 </div>
             </div>
